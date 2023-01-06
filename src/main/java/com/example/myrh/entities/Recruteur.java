@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Entity
 @NoArgsConstructor
@@ -11,9 +12,11 @@ import java.util.Objects;
 @Setter
 @Getter
 public class Recruteur {
+
+    private static final AtomicLong ID_GENERATOR = new AtomicLong();
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long id = ID_GENERATOR.incrementAndGet();
     private String nom;
     private String email;
     private String password;

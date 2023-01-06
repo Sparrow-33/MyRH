@@ -80,8 +80,8 @@ public class SecurityConfig {
         return new UserDetailsService() {
             @Override
             public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-                if (email.endsWith("-CLIENT")) {
-                    email = email.substring(0, email.length() - 7);
+                if (email.endsWith("-RECRUITER")) {
+                    email = email.substring(0, email.length() - 10);
                     System.out.println(email);
                     Recruteur recruteur1 = recruteur.findRecruteurByEmail(email);
                     return new User(recruteur1.getEmail(), recruteur1.getPassword(), Collections.singleton(new SimpleGrantedAuthority("USER")));
