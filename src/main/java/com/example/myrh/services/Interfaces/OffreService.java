@@ -14,4 +14,6 @@ public interface OffreService {
 
     List<Offre> getAllOffres();
 
+    void updateOffre(Offre offre);
+
 }

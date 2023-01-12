@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class GobalExceptionHandler {
+public class GlobalExceptionHandler {
     @Value(value = "${data.exception.UserNotFoundMessage}")
     private String message1;
 
     @ExceptionHandler(value = NoSuchUserException.class)
-    public ResponseEntity blogNotFoundException(NoSuchUserException noSuchUserException) {
+    public ResponseEntity UserNotFoundException(NoSuchUserException noSuchUserException) {
         return new ResponseEntity(message1, HttpStatus.NOT_FOUND);
     }
 }

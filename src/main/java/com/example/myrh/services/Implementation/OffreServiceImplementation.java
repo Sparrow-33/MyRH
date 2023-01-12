@@ -12,26 +12,37 @@ import java.util.List;
 @Service
 public class OffreServiceImplementation implements OffreService {
 
-    private final OffreRepo offre;
+    private final OffreRepo offreRepo;
 
     @Override
     public Offre OffreByRecruiter(Long id) {
-       return offre.getOffreByRecruteurId(id) ;
+       return offreRepo.getOffreByRecruteurId(id) ;
     }
 
     @Override
     public Offre OffreById(Long id) {
-        return offre.getOffreById(id);
+        return offreRepo.getOffreById(id);
     }
 
 
     @Override
     public void DeleteById(Long id) {
-        offre.deleteById(id);
+        offreRepo.deleteById(id);
     }
 
     @Override
     public List<Offre> getAllOffres() {
-        return offre.findAll();
+        return offreRepo.findAll();
     }
+
+    @Override
+    public void updateOffre(Offre offre) {
+        offreRepo.save(offre);
+    }
+
+    public boolean offreExists(Long id) {
+      return  offreRepo.existsById(id);
+    }
+
+
 }
