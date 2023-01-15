@@ -30,8 +30,10 @@ public class OffreController {
       return ResponseEntity.ok(list );
   }
 
+  @PostMapping("/addOffre")
+  public void addOffre(@RequestBody ) {
 
-
+  }
 
   }
 
