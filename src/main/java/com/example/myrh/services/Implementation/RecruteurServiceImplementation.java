@@ -20,4 +20,11 @@ public class RecruteurServiceImplementation implements RecruteurService {
         }
         return recruteur;
     }
+
+    @Override
+    public void recruteurRegister(Recruteur recruteur) {
+        repo.save(recruteur);
+    }
+
+
 }

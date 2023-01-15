@@ -23,11 +23,12 @@ public class Offre {
     @JoinColumn(name = "recruteur_id", referencedColumnName = "id")
     private Recruteur recruteur;
     private String title;
+    @Column(columnDefinition = "text")
     private String description;
     private String profile;
     private String niveau;
     private String ville;
-    private Double salaire;
+    private String salaire;
     private  int candidature;
     private boolean status;
     private LocalDate created_at;

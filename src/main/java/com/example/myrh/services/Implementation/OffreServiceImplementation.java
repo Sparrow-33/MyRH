@@ -44,5 +44,8 @@ public class OffreServiceImplementation implements OffreService {
       return  offreRepo.existsById(id);
     }
 
+    public void addOffre( Offre offre) {
+         offreRepo.save(offre);
+    }
 
 }

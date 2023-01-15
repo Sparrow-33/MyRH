@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Objects;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Entity
@@ -21,7 +22,16 @@ public class Recruteur {
     private String email;
     private String password;
     private String telephone;
-    private String image;
+
+    @ManyToMany(fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
+    @JoinTable(name = "recruteur_image",
+                joinColumns = {
+                   @JoinColumn(name = "recruteur_id")
+                },
+                inverseJoinColumns = {
+                   @JoinColumn(name = "image_id")
+                })
+    private Set<Image> image;
 
     @Override
     public boolean equals(Object o) {

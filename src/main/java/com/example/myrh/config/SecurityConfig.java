@@ -31,6 +31,8 @@ public class SecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
     private final RecruteurService recruteur;
 
+    public static Long ID = null;
+
     @Autowired
     @Lazy
     public SecurityConfig(JwtAuthFilter jwtAuthFilter, RecruteurService recruteur) {
@@ -71,7 +73,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -84,6 +86,7 @@ public class SecurityConfig {
                     email = email.substring(0, email.length() - 10);
                     System.out.println(email);
                     Recruteur recruteur1 = recruteur.findRecruteurByEmail(email);
+                    ID = recruteur1.getId();
                     return new User(recruteur1.getEmail(), recruteur1.getPassword(), Collections.singleton(new SimpleGrantedAuthority("USER")));
 
                 }

@@ -6,5 +6,5 @@ import com.example.myrh.exceptions.NoSuchUserException;
 public interface RecruteurService {
 
     Recruteur findRecruteurByEmail( String email) throws NoSuchUserException;
-
+    void recruteurRegister( Recruteur recruteur);
 }
